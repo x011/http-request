@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Properties Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="scripts/phonegap.js"></script>
+	<script type="text/javascript" charset="utf-8" src="scripts/httpRequest.js">
+	
+	    var httpOptions = {
+            trustAll: true
+        };
+        var params = {
+            q: 'phonegap',
+            type: 'post'// note this is a GET request post refers to the facebook wall posts
+        };
+
+        var apiUrl = 'https://graph.facebook.com/search?';
+
+        window.plugins.HttpRequest.execute(apiUrl,'get',params, httpOptions,
+                function(response) {
+
+                    var code = response.code;
+                    var message = response.message;
+                    var body = response.body;
+                    
+                    alert(JSON.stringify(body));
+                    
+                    return;
+                },
+                function(response) {
+              
+                    var code = response.code;
+                    var message = response.message;
+                    var body = response.body;
+
+                    alert('Request : ' + message + ' code ' + code);
+                });
+	</script>
+  </head>
+  <body>
+
+  </body>
+</html>
